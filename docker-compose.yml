@@ -1,0 +1,17 @@
+version: '2'
+services:
+  daystar:
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    container_name: daystar-server
+    image: daystar:0.1.0
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: backend
+    driver: bridge
