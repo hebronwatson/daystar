@@ -1,6 +1,24 @@
 # Daystar
 ## KJV Bible API
 
+### Installation
+#### With Node.js
+Clone repo
+`cd daystar`
+`npm install`
+
+#### With Docker (and docker-compose)
+Clone the repo
+`cd daystar`
+`docker compose build`
+
+### Run
+#### With Node.js
+`npm start`
+
+#### With Docker (and docker-compose)
+`docker compose up`
+
 ### Usage
 To be called like: `API_URL:PORT/api?book=John&chapter=3&verse=16`
 Or like: `API_URL:PORT/api/John/3/16`
