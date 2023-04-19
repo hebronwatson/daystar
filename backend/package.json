@@ -11,8 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "esbuild": "0.17.15",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "json-query": "^2.2.2"
+  },
+  "devDependencies": {
+    "rimraf": "^4.4.1"
   }
 }

@@ -1,0 +1,25 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+COPY *.js ./
+
+RUN npm ci
+
+COPY src ./src/
+
+COPY public ./public/
+
+RUN npm run build
+
+FROM node:alpine
+
+WORKDIR /app
+
+COPY --from=0 /app/build ./build/
+
+RUN npm i -g serve
+
+CMD ["serve", "-s", "build"] 

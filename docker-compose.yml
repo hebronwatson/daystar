@@ -1,17 +1,29 @@
 version: '2'
 services:
-  daystar:
+  daystar-backend:
     build:
-      context: .
-      dockerfile: ./dockerfile
-    container_name: daystar-server
-    image: daystar:0.1.0
+      context: backend
+      dockerfile: dockerfile
+    container_name: daystar-backend
+    image: hebronwatson/daystar-backend:${BACKEND_TAG}
+    environment:
+      - PORT=${SERVER_PORT}
     ports:
-      - "3000:3000"
+      - "${SERVER_PORT}:${SERVER_PORT}"
     networks:
-      - backend
+      - daystar
+  daystar-frontend:
+    build:
+      context: frontend
+      dockerfile: dockerfile
+    container_name: daystar-frontend
+    image: hebronwatson/daystar-frontend:${FRONTEND_TAG}
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    networks:
+      - daystar
 
 networks:
-  backend:
-    name: backend
+  daystar:
+    name: daystar
     driver: bridge
